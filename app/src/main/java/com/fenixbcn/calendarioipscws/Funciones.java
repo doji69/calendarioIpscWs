@@ -52,17 +52,17 @@ public class Funciones {
 
             if (fechaInicial.getTime() == selectedDate.getTime()) {
 
-                Log.d(TAG, "las fechas son iguale: " + fechaInicial + "-" + selectedDate);
+                //Log.d(TAG, "las fechas son iguale: " + fechaInicial + "-" + selectedDate);
                 lCadenaEventosSel.add(lCadenaEventos.get(i));
 
             } else if ((fechaInicial.getTime() < selectedDate.getTime()) && (fechaFinal.getTime() > selectedDate.getTime())) {
 
-                Log.d(TAG, "la fecha seleccionada " + selectedDate + " esta entre: " + fechaInicial + "-" + fechaFinal);
+                //Log.d(TAG, "la fecha seleccionada " + selectedDate + " esta entre: " + fechaInicial + "-" + fechaFinal);
                 lCadenaEventosSel.add(lCadenaEventos.get(i));
 
             } else if (fechaFinal.getTime() == selectedDate.getTime()) {
 
-                Log.d(TAG, "las fechas son iguale: " + fechaFinal + "-" + selectedDate);
+                //Log.d(TAG, "las fechas son iguale: " + fechaFinal + "-" + selectedDate);
                 lCadenaEventosSel.add(lCadenaEventos.get(i));
             }
 

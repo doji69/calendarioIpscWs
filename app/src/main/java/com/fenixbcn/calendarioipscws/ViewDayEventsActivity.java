@@ -47,7 +47,7 @@ public class ViewDayEventsActivity extends AppCompatActivity {
 
         lCadenaEventosSel = Funciones.getDateEvents(lCadenaEventos, selectedDate);
 
-        Log.d(TAG, "la lista de items seleccionados: " + lCadenaEventos);
+        //Log.d(TAG, "la lista de items seleccionados: " + lCadenaEventos);
 
         /* fin extraer de la lista de eventos los eventos en los que fecha seleccionada y es inicio, fin o
         se encuentra entre el inicio y el fin */

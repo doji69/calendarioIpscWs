@@ -286,7 +286,6 @@ public class CalendarMainActivity extends AppCompatActivity {
             return null;
         }
 
-
         @Override
         protected void onPreExecute() {
             tvOutputText.setText("");

@@ -4,7 +4,7 @@
     android:id="@+id/lySingleEvent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/listview_eventos_style"
+    android:background="@drawable/listview_pressed_selector_color"
     android:paddingBottom="20dp">
 
 <ImageView
