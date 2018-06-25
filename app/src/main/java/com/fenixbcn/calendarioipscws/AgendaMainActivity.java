@@ -84,7 +84,7 @@ public class AgendaMainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 String selectedTitulo = ((Evento)lvAllEvents.getItemAtPosition(i)).titulo;
-                Log.d(TAG, "el evento es: " + selectedTitulo);
+                //Log.d(TAG, "el evento es: " + selectedTitulo);
 
                 Intent clubsMapsActivityVars = new Intent(getApplication(), ClubsMapsActivity.class);
                 clubsMapsActivityVars.putExtra("selectedTitulo", selectedTitulo);
