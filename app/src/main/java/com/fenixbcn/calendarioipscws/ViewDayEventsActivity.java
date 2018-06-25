@@ -1,14 +1,19 @@
 package com.fenixbcn.calendarioipscws;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class ViewDayEventsActivity extends AppCompatActivity {
@@ -20,6 +25,9 @@ public class ViewDayEventsActivity extends AppCompatActivity {
     List<String> lCadenaEventos = new ArrayList<String>();
     List<String> lCadenaEventosSel = new ArrayList<String>();
     Date selectedDate = new Date();
+
+    List<Object> alEventos = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,8 +68,8 @@ public class ViewDayEventsActivity extends AppCompatActivity {
             tvNoEvents = (TextView) findViewById(R.id.tvNoEvents);
             tvNoEvents.setText("");
 
-            List<Object> alEventos = new ArrayList<>();
-            EventoAdapter eventos;
+
+            final EventoAdapter eventos;
 
             alEventos.add(new String(sSelectedDate));
 
@@ -98,6 +106,19 @@ public class ViewDayEventsActivity extends AppCompatActivity {
 
             lvDayEvents = (ListView) findViewById(R.id.lvDayEvents);
             lvDayEvents.setAdapter(eventos);
+
+            lvDayEvents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    String selectedTitulo = ((Evento)lvDayEvents.getItemAtPosition(i)).titulo;
+                    //Log.d(TAG, "el evento es: " + selectedTitulo);
+
+                    Intent clubsMapsActivityVars = new Intent(getApplication(), ClubsMapsActivity.class);
+                    clubsMapsActivityVars.putExtra("selectedTitulo", selectedTitulo);
+                    startActivity(clubsMapsActivityVars);
+                }
+            });
 
         }
     }

@@ -32,6 +32,7 @@ public class Evento {
         Boolean logoClubExists;
         String [] nombresClubs = {"Barcelona", "Granollers", "Jordi Tarragó","Lleida","Mataró","Montsia",
                 "Osona","Platja d'Aro","Sabadell","Terrassa","Vilassar","R.T.A.A.","RFEDETO"};
+
         String nombreClub="";
 
         for (int i = 0; i < nombresClubs.length; i++) {
