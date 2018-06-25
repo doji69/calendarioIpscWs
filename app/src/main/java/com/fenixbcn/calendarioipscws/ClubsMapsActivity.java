@@ -107,7 +107,7 @@ public class ClubsMapsActivity extends AppCompatActivity implements OnMapReadyCa
     public LatLng getLocation() {
 
         Boolean nombreClubExists;
-        String [] nombresClubs = {"Barcelona", "Granollers", "Jordi Tarragó","Lleida","Mataró","Montsia",
+        String [] nombresClubs = {"Barcelona", "Granollers", "Jordi Tarragó","Lleida","Mataró","Montsia","Montsià",
                 "Osona","Platja d'Aro","Sabadell","Terrassa","Vilassar","R.T.A.A.","Hontanares de Eresma",
                 "As Pontes","Huesca","Valdemoro"};
         LatLng latPosition = null;
@@ -132,6 +132,9 @@ public class ClubsMapsActivity extends AppCompatActivity implements OnMapReadyCa
                         break;
                     case "Mataró":
                         latPosition = new LatLng(41.576215, 2.420951);
+                        break;
+                    case "Montsià":
+                        latPosition = new LatLng(40.685412, 0.543492);
                         break;
                     case "Montsia":
                         latPosition = new LatLng(40.685412, 0.543492);
