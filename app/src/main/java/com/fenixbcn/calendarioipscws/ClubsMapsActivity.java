@@ -148,8 +148,7 @@ public class ClubsMapsActivity extends AppCompatActivity implements OnMapReadyCa
                 mMap.addMarker(new MarkerOptions().position(latPositionSel).title("Club tiro"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latPositionSel));
 
-                float zoomMapLevel = 14;
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latPositionSel,zoomMapLevel));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latPositionSel,DEFAULT_ZOOM));
 
             } else {
                 Toast.makeText(this, "no hay mapa", Toast.LENGTH_SHORT).show();
