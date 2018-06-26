@@ -115,9 +115,6 @@ public class CalendarMainActivity extends AppCompatActivity {
 
         // llamada a la funcion asyntask para capturar el resultado del webservice
         new jtGetEvents().execute("http://www.corsaformacio.com/IpscCalendar/calendarioIpscWs.php");
-
-
-
     }
 
     /**
