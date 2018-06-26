@@ -3,15 +3,19 @@ package com.fenixbcn.calendarioipscws;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
@@ -307,5 +311,48 @@ public class CalendarMainActivity extends AppCompatActivity {
 
             }
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the main_menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_calendar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        String url;
+        Intent browserIntent;
+
+        switch(item.getItemId()) {
+            case R.id.gotoFederacion:
+
+                Calendar calendar = Calendar.getInstance(); // necesitamos crear la instacia de Calendar para luego obtener el año
+                int year = calendar.get(Calendar.YEAR);
+
+                url="http://www.tirolimpico.org/apps/displayFile/es/RFEDETO/public/pages/calendarios-deportivos/precision/calendario-deportivo-recorridos-" + year + ".cms_xhtml";
+
+                browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(browserIntent);
+
+                Toast.makeText(CalendarMainActivity.this, "federación", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.gotoFederacio:
+
+                url="http://www.tircat.org/calendar_precisio.php?catcal=prprecisio";
+
+                browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(browserIntent);
+
+
+                Toast.makeText(CalendarMainActivity.this, "federació", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        return true;
     }
 }
