@@ -1,9 +1,14 @@
 package com.fenixbcn.calendarioipscws;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -26,9 +31,14 @@ public class ClubsMapsActivity extends AppCompatActivity implements OnMapReadyCa
 
     private static final String TAG = "Calendario Ipsc";
 
+    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
+    private static final float DEFAULT_ZOOM = 15;
+
+    private Boolean mLocationPermissionGranted = false;
+
     private GoogleMap mMap;
-    private final int googleRequestCode = 10;
-    private final int googleErrorCode = 1;
     private  LatLng latPosition;
     String selectedTitulo;
 
@@ -41,32 +51,69 @@ public class ClubsMapsActivity extends AppCompatActivity implements OnMapReadyCa
         getSupportActionBar().setIcon(R.mipmap.logo);
         getSupportActionBar().setTitle("calendario Ipsc Cat");
 
-
         Bundle clubsMapsActivityVars = getIntent().getExtras();
         selectedTitulo = clubsMapsActivityVars.getString("selectedTitulo");
 
-        Log.d(TAG, "el titlulo selecionado es: " + selectedTitulo);
+        //Log.d(TAG, "el titlulo selecionado es: " + selectedTitulo);
 
-        //int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
-        int status = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getApplicationContext());
+        getLocationPermission();
+    }
 
+    private void getLocationPermission() {
 
-        if (status == ConnectionResult.SUCCESS) {
+        //Log.d (Tag, "getLocationPermission: getting location permissions");
+        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION};
 
-            // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.map);
-            mapFragment.getMapAsync(this);
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(), FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED) {
 
-
+            if (ContextCompat.checkSelfPermission(this.getApplicationContext(), COARSE_LOCATION) ==
+                    PackageManager.PERMISSION_GRANTED) {
+                mLocationPermissionGranted = true;
+                //Log.d (Tag, "getLocationPermission: permission are granted");
+                initMap();
+            } else {
+                ActivityCompat.requestPermissions(this, permissions, LOCATION_PERMISSION_REQUEST_CODE);
+            }
         } else {
-
-            //Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(status,(Activity)getApplicationContext(),googleRequest);
-            Dialog errorDialog = GoogleApiAvailability.getInstance().getErrorDialog(this,googleErrorCode,googleRequestCode);
-            errorDialog.show();
-
+            ActivityCompat.requestPermissions(this, permissions, LOCATION_PERMISSION_REQUEST_CODE);
         }
+    }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        //Log.d (Tag, "onRequestPermissionsResult: called");
+        mLocationPermissionGranted = false;
+
+        switch (requestCode) {
+
+            case LOCATION_PERMISSION_REQUEST_CODE: {
+                if ((grantResults.length > 0)) {
+
+                    for (int i = 0; i < grantResults.length; i++) {
+                        if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                            mLocationPermissionGranted = false;
+                            //Log.d (Tag, "onRequestPermissionsResult: permission failed");
+                            return;
+                        }
+                    }
+                    //Log.d (Tag, "onRequestPermissionsResult: permission granted");
+                    mLocationPermissionGranted = true;
+                    // inicialize the map
+                    initMap();
+                }
+            }
+        }
+    }
+
+    private void initMap() {
+
+        //Log.d (Tag, "initMap: inicialize the map");
+        final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+
+        mapFragment.getMapAsync(ClubsMapsActivity.this);
     }
 
     /**
@@ -80,27 +127,33 @@ public class ClubsMapsActivity extends AppCompatActivity implements OnMapReadyCa
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        Toast.makeText(this, "Map is ready", Toast.LENGTH_SHORT).show();
+        //Log.d(Tag,"onMapReady: map is ready");
+
         mMap = googleMap;
 
-        mMap.setMapType(googleMap.MAP_TYPE_NORMAL);
+        if (mLocationPermissionGranted) {
 
-        UiSettings uiSettingsMap = mMap.getUiSettings();
-        uiSettingsMap.setZoomControlsEnabled(true);
+            mMap.setMapType(googleMap.MAP_TYPE_SATELLITE);
 
-        // Add a marker in Sydney and move the camera
+            UiSettings uiSettingsMap = mMap.getUiSettings();
+            uiSettingsMap.setZoomControlsEnabled(true);
+            uiSettingsMap.setMapToolbarEnabled(true);
 
-        LatLng latPositionSel = getLocation();
+            LatLng latPositionSel = getLocation();
 
-        if (latPositionSel != null) {
+            if (latPositionSel != null) {
 
-            mMap.addMarker(new MarkerOptions().position(latPositionSel).title("Club tiro"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latPositionSel));
+                mMap.addMarker(new MarkerOptions().position(latPositionSel).title("Club tiro"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(latPositionSel));
 
-            float zoomMapLevel = 14;
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latPositionSel,zoomMapLevel));
+                float zoomMapLevel = 14;
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latPositionSel,zoomMapLevel));
 
-        } else {
-            Toast.makeText(this, "no hay mapa", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "no hay mapa", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
