@@ -1,12 +1,16 @@
 package com.fenixbcn.calendarioipscws;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,12 +87,32 @@ public class AgendaMainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                String selectedTitulo = ((Evento)lvAllEvents.getItemAtPosition(i)).titulo;
-                //Log.d(TAG, "el evento es: " + selectedTitulo);
+            String selectedTitulo = ((Evento)lvAllEvents.getItemAtPosition(i)).titulo;
+            //Log.d(TAG, "el evento es: " + selectedTitulo);
 
-                Intent clubsMapsActivityVars = new Intent(getApplication(), ClubsMapsActivity.class);
-                clubsMapsActivityVars.putExtra("selectedTitulo", selectedTitulo);
-                startActivity(clubsMapsActivityVars);
+            LatLng latPositionSel = Funciones.getLocation(selectedTitulo);
+
+            Double latitud = latPositionSel.latitude;
+            Double longitud = latPositionSel.longitude;
+            float zomm = 15;
+
+            Uri gmmIntentUri = Uri.parse("geo:" + latitud + "," + longitud + "?z=" + zomm + ",q=" + Uri.encode("CLub tiro"));
+            Log.d(TAG, "la localizacion es: " + gmmIntentUri);
+
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(mapIntent);
+            } else {
+
+                Toast.makeText(AgendaMainActivity.this, "Por favor, instala Google Maps", Toast.LENGTH_LONG).show();
+            }
+
+            /*
+            Intent clubsMapsActivityVars = new Intent(getApplication(), ClubsMapsActivity.class);
+            clubsMapsActivityVars.putExtra("selectedTitulo", selectedTitulo);
+            startActivity(clubsMapsActivityVars);
+            */
             }
         });
 
