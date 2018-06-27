@@ -196,7 +196,8 @@ public class CalendarMainActivity extends AppCompatActivity {
 
             // pintamos todos los dias dedes la fecha de inicio a la fecha de fin del evento
             int difDias = diasFin-diasInicio;
-            //Log.d(TAG, "la diferencia de dias es : " + difDias);
+
+            Log.d(TAG, "la diferencia de dias es : " + difDias);
             for (int j=0; j<=difDias;j++) {
                 Calendar cal = Calendar.getInstance(); // hay que llamar al getInstance para cada fecha que se quiere colorear
                 cal.add(Calendar.DATE, diasInicio+j);
@@ -257,7 +258,7 @@ public class CalendarMainActivity extends AppCompatActivity {
                     String fechaInicio = evento.getString("start");
                     String fechaFin = evento.getString("end");
 
-                    //Log.d(TAG, "titulo: " + titulo + " fechaInicio: " + fechaInicio + "fechaFin: "+ fechaFin);
+                    Log.d(TAG, "titulo: " + titulo + " fechaInicio: " + fechaInicio + "fechaFin: "+ fechaFin);
 
                     String cadena = titulo + " - " + fechaInicio + " - "+ fechaFin;
 
