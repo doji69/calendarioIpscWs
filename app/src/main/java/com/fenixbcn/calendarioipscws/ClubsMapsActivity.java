@@ -39,7 +39,6 @@ public class ClubsMapsActivity extends AppCompatActivity implements OnMapReadyCa
     private Boolean mLocationPermissionGranted = false;
 
     private GoogleMap mMap;
-    private  LatLng latPosition;
     String selectedTitulo;
 
     @Override

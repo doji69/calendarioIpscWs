@@ -30,8 +30,8 @@ public class Evento {
     public String getNombreClub (String titulo) {
 
         Boolean logoClubExists;
-        String [] nombresClubs = {"Barcelona", "Granollers", "Jordi Tarragó","Lleida","Mataró","Montsia",
-                "Osona","Platja d'Aro","Sabadell","Terrassa","Vilassar","R.T.A.A.","RFEDETO"};
+        String [] nombresClubs = {"Barcelona", "Granollers", "Igualada", "Jordi Tarragó","Lleida","Mataró","Montsià","Montsia",
+                "Osona","Platja d'Aro","R.T.A.A.","Sabadell","Terrassa","Vilassar","RFEDETO"};
 
         String nombreClub="";
 
@@ -59,8 +59,11 @@ public class Evento {
             case "Barcelona":
                 iconClub = R.mipmap.club_barcelona_ico;
                 break;
+            case "Igualada":
+                iconClub = R.mipmap.club_igualada_ico;
+                break;
             case "Jordi Tarragó":
-                iconClub = R.mipmap.club_jordi_arrago_ico;
+                iconClub = R.mipmap.club_jordi_tarrago_ico;
                 break;
             case "Lleida":
                 iconClub = R.mipmap.club_lleida_ico;
@@ -73,6 +76,12 @@ public class Evento {
                 break;
             case "Osona":
                 iconClub = R.mipmap.club_osona_ico;
+                break;
+            case "Platja d'Aro":
+                iconClub = R.mipmap.club_platjadaro_ico;
+                break;
+            case "R.T.A.A.":
+                iconClub = R.mipmap.club_rtaa_ico;
                 break;
             case "Terrassa":
                 iconClub = R.mipmap.club_terrassa_ico;

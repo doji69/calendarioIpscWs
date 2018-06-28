@@ -256,8 +256,8 @@ public class Funciones {
     static public LatLng getLocation(String selectedTitulo) {
 
         Boolean nombreClubExists;
-        String [] nombresClubs = {"Barcelona", "Granollers", "Jordi Tarragó","Lleida","Mataró","Montsia","Montsià",
-                "Osona","Platja d'Aro","Sabadell","Terrassa","Vilassar","R.T.A.A.","Hontanares de Eresma",
+        String [] nombresClubs = {"Barcelona", "Granollers", "Igualada", "Jordi Tarragó","Lleida","Mataró","Montsià",
+                "Montsia","Osona","Platja d'Aro","R.T.A.A.","Sabadell","Terrassa","Vilassar","Hontanares de Eresma",
                 "As Pontes","Huesca","Valdemoro"};
         LatLng latPosition = null;
 
@@ -267,11 +267,14 @@ public class Funciones {
             if (nombreClubExists==true) {
 
                 switch (nombresClubs[i]) {
+                    case "Barcelona":
+                        latPosition = new LatLng(41.3695149, 2.1701805);
+                        break;
                     case "Granollers":
                         latPosition = new LatLng(41.6173887, 2.2704919);
                         break;
-                    case "Barcelona":
-                        latPosition = new LatLng(41.3695149, 2.1701805);
+                    case "Igualada":
+                        latPosition = null;
                         break;
                     case "Jordi Tarragó":
                         latPosition = new LatLng(41.1633502, 1.2416613);
@@ -291,14 +294,20 @@ public class Funciones {
                     case "Osona":
                         latPosition = new LatLng(41.973305, 2.271611);
                         break;
+                    case "Platja d'Aro":
+                        latPosition = null;
+                        break;
+                    case "R.T.A.A.":
+                        latPosition = new LatLng(41.461502, -0.704428);
+                        break;
+                    case "Sabadell":
+                        latPosition = null;
+                        break;
                     case "Terrassa":
                         latPosition = new LatLng(41.59458, 2.03766);
                         break;
                     case "Vilassar":
                         latPosition = new LatLng(41.50611, 2.38046);
-                        break;
-                    case "R.T.A.A.":
-                        latPosition = new LatLng(41.461502, -0.704428);
                         break;
                     case "Hontanares de Eresma":
                         latPosition = new LatLng(40.9965688, -4.1976809);
