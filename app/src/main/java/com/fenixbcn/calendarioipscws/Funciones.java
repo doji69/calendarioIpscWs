@@ -274,7 +274,7 @@ public class Funciones {
                         latPosition = new LatLng(41.6173887, 2.2704919);
                         break;
                     case "Igualada":
-                        latPosition = null;
+                        latPosition = new LatLng(41.5833731,1.6758845);
                         break;
                     case "Jordi Tarragó":
                         latPosition = new LatLng(41.1633502, 1.2416613);
@@ -301,7 +301,7 @@ public class Funciones {
                         latPosition = new LatLng(41.461502, -0.704428);
                         break;
                     case "Sabadell":
-                        latPosition = null;
+                        latPosition = new LatLng(41.5215577,2.0990669);
                         break;
                     case "Terrassa":
                         latPosition = new LatLng(41.59458, 2.03766);
