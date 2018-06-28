@@ -94,7 +94,7 @@ public class AgendaMainActivity extends AppCompatActivity {
 
             Double latitud = latPositionSel.latitude;
             Double longitud = latPositionSel.longitude;
-            float zomm = 15;
+            float zomm = 20;
 
             Uri gmmIntentUri = Uri.parse("geo:" + latitud + "," + longitud + "?z=" + zomm + ",q=" + Uri.encode("CLub tiro"));
             Log.d(TAG, "la localizacion es: " + gmmIntentUri);

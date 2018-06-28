@@ -74,6 +74,9 @@ public class Evento {
             case "Montsia":
                 iconClub = R.mipmap.club_montsia_ico;
                 break;
+            case "Montsià":
+                iconClub = R.mipmap.club_montsia_ico;
+                break;
             case "Osona":
                 iconClub = R.mipmap.club_osona_ico;
                 break;

@@ -34,7 +34,7 @@ public class ClubsMapsActivity extends AppCompatActivity implements OnMapReadyCa
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
-    private static final float DEFAULT_ZOOM = 15;
+    private static final float DEFAULT_ZOOM = 18;
 
     private Boolean mLocationPermissionGranted = false;
 
@@ -134,7 +134,7 @@ public class ClubsMapsActivity extends AppCompatActivity implements OnMapReadyCa
 
         if (mLocationPermissionGranted) {
 
-            mMap.setMapType(googleMap.MAP_TYPE_SATELLITE);
+            mMap.setMapType(googleMap.MAP_TYPE_HYBRID);
 
             UiSettings uiSettingsMap = mMap.getUiSettings();
             uiSettingsMap.setZoomControlsEnabled(true);

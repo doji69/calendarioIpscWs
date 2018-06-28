@@ -85,7 +85,7 @@ public class Funciones {
             inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             outputDateFormat = new SimpleDateFormat("dd MMM yyyy");
         } else {
-            inputDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'+02:00'");
+            inputDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ssz",spanish);
             outputDateFormat = new SimpleDateFormat("dd MMM yyyy k:mm ");
         }
 
@@ -169,32 +169,6 @@ public class Funciones {
         }
 
         return lCadenaEventosOrdered;
-    }
-
-    static public String setDateListViewHeaderFormat (String dateTime) {
-
-        Locale spanish = new Locale("es", "ES");
-        SimpleDateFormat inputDateFormat = null;
-        SimpleDateFormat outputDateFormat = null;
-        String formattedDateTime = "";
-        Date date = null;
-
-        Calendar calendar = Calendar.getInstance(); // necesitamos crear la instacia de Calendar para luego obtener el año
-        int year = calendar.get(Calendar.YEAR);
-
-        String subcadenaFecha = dateTime.substring(0,10) + " " +year;
-
-        inputDateFormat = new SimpleDateFormat("EEE MMM dd yyyy",Locale.US);
-        outputDateFormat = new SimpleDateFormat("dd MMM yyyy");
-
-        try {
-            date = inputDateFormat.parse(subcadenaFecha);
-            formattedDateTime = outputDateFormat.format(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return formattedDateTime;
     }
 
     static public List<String> orderEventsByDateWithHeader (List<String> lCadenaEventosOrdered) {
@@ -295,7 +269,7 @@ public class Funciones {
                         latPosition = new LatLng(41.973305, 2.271611);
                         break;
                     case "Platja d'Aro":
-                        latPosition = null;
+                        latPosition = new LatLng(41.8080069,3.0285842);
                         break;
                     case "R.T.A.A.":
                         latPosition = new LatLng(41.461502, -0.704428);
