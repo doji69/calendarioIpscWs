@@ -120,6 +120,7 @@ public class ViewDayEventsActivity extends AppCompatActivity {
                     String selectedTitulo = ((Evento)lvDayEvents.getItemAtPosition(i)).titulo;
                     //Log.d(TAG, "el evento es: " + selectedTitulo);
 
+
                     LatLng latPositionSel = Funciones.getLocation(selectedTitulo);
 
                     Double latitud = latPositionSel.latitude;
@@ -138,11 +139,13 @@ public class ViewDayEventsActivity extends AppCompatActivity {
                         Toast.makeText(ViewDayEventsActivity.this, "Por favor, instala Google Maps", Toast.LENGTH_LONG).show();
                     }
 
+
                     /*
                     Intent clubsMapsActivityVars = new Intent(getApplication(), ClubsMapsActivity.class);
                     clubsMapsActivityVars.putExtra("selectedTitulo", selectedTitulo);
                     startActivity(clubsMapsActivityVars);
                     */
+
                 }
             });
 

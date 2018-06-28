@@ -334,7 +334,7 @@ public class CalendarMainActivity extends AppCompatActivity {
                 browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(browserIntent);
 
-                Toast.makeText(CalendarMainActivity.this, "federación", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CalendarMainActivity.this, "federación", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.gotoFederacio:
@@ -345,7 +345,7 @@ public class CalendarMainActivity extends AppCompatActivity {
                 startActivity(browserIntent);
 
 
-                Toast.makeText(CalendarMainActivity.this, "federació", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CalendarMainActivity.this, "federació", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 return super.onOptionsItemSelected(item);

@@ -11,9 +11,13 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            manifestPlaceholders = [ google_map_key:"AIzaSyDpte9-fGOolVkN3ajLdJ2ScdURvZ_FL7M"]
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [ google_map_key:"AIzaSyDpte9-fGOolVkN3ajLdJ2ScdURvZ_FL7M"]
         }
     }
 }
