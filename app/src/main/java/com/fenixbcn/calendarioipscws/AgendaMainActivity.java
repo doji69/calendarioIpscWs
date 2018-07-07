@@ -96,7 +96,9 @@ public class AgendaMainActivity extends AppCompatActivity {
             Double longitud = latPositionSel.longitude;
             float zomm = 20;
 
+            // coloca el club en la app de google maps
             Uri gmmIntentUri = Uri.parse("geo:" + latitud + "," + longitud + "?z=" + zomm + ",q=" + Uri.encode("CLub tiro"));
+
             Log.d(TAG, "la localizacion es: " + gmmIntentUri);
 
             Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
