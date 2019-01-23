@@ -232,7 +232,7 @@ public class Funciones {
         Boolean nombreClubExists;
         String [] nombresClubs = {"Barcelona", "Granollers", "Igualada", "Jordi Tarragó","Lleida","Mataró","Montsià",
                 "Montsia","Osona","Platja d'Aro","R.T.A.A.","Sabadell","Terrassa","Vilassar","Hontanares de Eresma",
-                "As Pontes","Huesca","Valdemoro"};
+                "As Pontes","Huesca","Valdemoro","Les Gavarres"};
         LatLng latPosition = null;
 
         for (int i = 0; i < nombresClubs.length; i++) {
@@ -294,6 +294,9 @@ public class Funciones {
                         break;
                     case "Valdemoro":
                         latPosition = new LatLng(40.1751297, -3.6524834);
+                        break;
+                    case "Les Gavarres":
+                        latPosition = new LatLng(41.8967475, 2.8408499);
                         break;
                     default:
                         latPosition = null;

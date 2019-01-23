@@ -31,7 +31,7 @@ public class Evento {
 
         Boolean logoClubExists;
         String [] nombresClubs = {"Barcelona", "Granollers", "Igualada", "Jordi Tarragó","Lleida","Mataró","Montsià","Montsia",
-                "Osona","Platja d'Aro","R.T.A.A.","Sabadell","Terrassa","Vilassar","RFEDETO"};
+                "Osona","Platja d'Aro","R.T.A.A.","Sabadell","Terrassa","Vilassar","RFEDETO","Les Gavarres"};
 
         String nombreClub="";
 
@@ -97,6 +97,9 @@ public class Evento {
                 break;
             case "RFEDETO":
                 iconClub = R.mipmap.federacion_tiro_olimpico_ico;
+                break;
+            case "Les Gavarres":
+                iconClub = R.mipmap.club_gavarres_ico;
                 break;
             default:
                 iconClub = R.mipmap.ic_launcher;
